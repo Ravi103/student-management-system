@@ -6,8 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class FileHandler {
-    public static void writeToFile(String student, int action) throws IOException {
-        System.out.println(student);
+    public static void appendToFile(String student) throws IOException {
         File file = new File("student.json");
         if (!file.exists()) {
             file.createNewFile();
@@ -40,8 +39,6 @@ public class FileHandler {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(content);
-            System.out.println("Student data saved successfully!");
-            writer.close();
         } catch (IOException e) {
             throw new IOException("Error writing to file: " + e.getMessage());
         }
